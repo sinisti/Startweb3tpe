@@ -3,6 +3,8 @@ header('Content-Type: text/html; charset=UTF-8');
 require('app/config/config.php');
 require('app/config/db.php');
 require('app/functions/validate.function.php');
+git config --global user.name "sinisti"
+git config --global user.email "spideralan2008@gmail.com"
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {	
 	fieldRequired('Imie',$_POST['name']);
@@ -25,9 +27,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
 <head>
-<meta charset="utf-8">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css"/>
+	<link rel="stylesheet" href="assets/css/style.css"/>
+	<script type="text/javascript" src="assets/js/bootstrap/bootstrap.min.js"></script>
 <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
