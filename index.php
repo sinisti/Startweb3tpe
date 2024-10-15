@@ -45,7 +45,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 					switch ($action)
 					{
 						case 'delete':
-							echo 'delete';
+							$query = "DELETE FROM users WHERE id=$id";
+							if ($db->query($query)){
+								showMessage('success', 'Data deleted succesfully!');
+							}
+							else{
+								showMessage('warning', 'Data has not been deleted!');
+							}
 							break;
 					}
 					include ('templates/users.html.php');	
