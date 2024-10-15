@@ -40,11 +40,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			</section>
 			<section class="content">
 				<?php
+				if(isset($_REQUEST['action'])){	
 					$action = $_REQUEST['action'];
-					$id = (int) $_REQUEST['id'];
-					switch ($action)
-					{
+					switch($action){
 						case 'delete':
+							if(isset($_REQUEST['id']) && !empty($_REQUEST['id'])){
+								$id = (int) $_REQUEST['id'];
+							}
 							$query = "DELETE FROM users WHERE id=$id";
 							if ($db->query($query)){
 								showMessage('success', 'Data deleted succesfully!');
@@ -54,6 +56,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 							}
 							break;
 					}
+				}
 					include ('templates/users.html.php');	
 				?>
 			</section>
