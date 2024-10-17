@@ -3,7 +3,10 @@ header('Content-Type: text/html; charset=UTF-8');
 require('app/config/config.php');
 require('app/config/db.php');
 require('app/functions/validate.function.php');
-require('app/functions/helper.function.php');	
+require('app/functions/helper.function.php');
+
+include('templates/MasterPage.html.php');
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){	
 	fieldRequired('Imię', $_POST['name']);
 	fieldRequired('Nazwisko', $_POST['surname']);
@@ -36,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	<body>
 		<main>
 			<section class="content">
-				<?php include ('templates/form.html.php'); ?>
+				<?php include ('templates/views/index/form.html.php'); ?>
 			</section>
 			<section class="content">
 				<?php
@@ -57,7 +60,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 							break;
 					}
 				}
-					include ('templates/users.html.php');	
+					include ('templates/views/index/users.html.php');	
 				?>
 			</section>
 		</main>
