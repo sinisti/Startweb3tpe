@@ -7,7 +7,7 @@ require('app/functions/helper.function.php');
 
 include('templates/MasterPage.html.php');
 
-if($_SERVER['REQUEST_MET	HOD'] == 'POST'){	
+if($_SERVER['REQUEST_METHOD'] == 'POST'){	
 	fieldRequired('Imię', $_POST['name']);
 	fieldRequired('Nazwisko', $_POST['surname']);
 	fieldRequired('E-mail', $_POST['email']);

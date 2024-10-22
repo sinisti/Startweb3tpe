@@ -17,7 +17,7 @@
             } else{
                 die('Forget about it');
             }
-            exit;            
+            //exit;            
         ?>
     </main>
 </body>
