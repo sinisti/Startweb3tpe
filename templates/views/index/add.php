@@ -1,7 +1,5 @@
 <?php
-
-if($_SERVER['REQUEST_METHOD'] == 'POST')
-{
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	fieldRequired('Imię', $_POST['name']);
 	fieldRequired('Nazwisko', $_POST['surname']);
 	fieldRequired('E-mail', $_POST['email']);
@@ -17,19 +15,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		$dbStatus = [];
 		$password = md5(PASS_SALT . $_POST['password']);
 		$query = "INSERT INTO users SET user_name = '{$_POST['name']}', user_surname = '{$_POST['surname']}', user_email = '{$_POST['email']}', user_password = '$password'";
-		if ($db->query($query))
-		{
+		if ($db->query($query)){
 			$dbStatus = ['status' => 'success', 'msg' => 'Data was inserted Successfully'];
 		}
-		else
-		{
+		else{
 			$dbStatus = ['status' => 'warning', 'msg' => 'Data has not been inserted!'];
 		}
 	}
 }
 
-if (isset($dbStatus['status']))
-{
+if (isset($dbStatus['status'])){
 	showMessage($dbStatus['status'], $dbStatus['msg']);
 }
 include ('templates/form.html.php');

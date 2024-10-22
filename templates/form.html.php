@@ -28,7 +28,7 @@
                 <input id="password2" class="form-control" type="password" name="password2" placeholder="Powtórz hasło" require />
             </div>
             <div class="mb-4 d-flex justify-content-end">
-                <a class="btn btn-warning" href="<?php echo BASE_URL; ?>">powrót</a>&nbsp;&nbsp;
+                <a class="btn btn-warning" href="<?php echo BASE_URL; ?>">Powrót</a>&nbsp;&nbsp;
                 <button class="btn btn-success" type="submit" name="submit">Wyślij</button>
             </div>
         </form>

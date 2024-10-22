@@ -6,10 +6,8 @@
     $html .= '<tbody>';
     $sql = "SELECT * FROM users";
     $res = $db->query($sql);
-    if ($res->num_rows > 0)
-    {
-        while ($row = $res->fetch_assoc())
-        {
+    if ($res->num_rows > 0){
+        while ($row = $res->fetch_assoc()){
             $name = $row['user_name'] . ' ' . $row['user_surname'];
             $html .= '<tr>';
             $html .= '<td>' . $row['id'] . '</td>';
@@ -21,11 +19,9 @@
         }
         $html .= "</tbody>";
         $html .= "</table>";
-
         echo $html;
     }
-    else
-    {
+    else{
         echo '<p class="text-danger">Nie znaleziono wpisów</p>';
     }
     ?>

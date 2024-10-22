@@ -1,5 +1,4 @@
 <?php
-
 $protocol = 'http://';
 if (isset($_SERVER['HTTPS']))
 {
