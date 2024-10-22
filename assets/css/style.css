@@ -14,3 +14,23 @@ html, body
 {
 	padding: 60px 0;
 }
+
+.action
+{
+	display: inline-block;
+	margin-right: 10px;
+	color: #ccc;
+	text-decoration: none;
+	opacity: 0.5;
+	transition: all .3s ease;
+}
+
+.action:hover
+{
+	opacity: 1;
+}
+
+.action i
+{
+	margin-right: 3px;
+}

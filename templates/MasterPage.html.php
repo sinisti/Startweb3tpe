@@ -7,18 +7,24 @@
 
 		<script type="text/javascript" src="assets/js/bootstrap/bootstrap.min.js"></script>
 	</head>
-<body>
-    <main>
-        <?php
-            $page = isset($_GET['page']) ? $_GET['page'] : 'index';
-            $action = isset($_GET['action']) ? $_GET['action'] : 'index';
-            if (is_file($file = 'templates/views/' . DIRECTORY_SEPARATOR . $page . DIRECTORY_SEPARATOR . $action . '.php')){
-                include ($file);
-            } else{
-                die('Forget about it');
-            }
-            //exit;            
-        ?>
-    </main>
-</body>
+	
+	<body>
+		<main>
+			<section class="content">
+				<?php
+					$page = isset($_GET['page']) ? $_GET['page'] : 'index';
+					$action = isset($_GET['action']) ? $_GET['action']: 'index';
+					if (is_file($file = 'templates/views' . DIRECTORY_SEPARATOR . $page . DIRECTORY_SEPARATOR . $action . '.php'))
+					{
+						include ($file);
+					}
+					else
+					{
+						die('Forget about it');
+					}
+					//exit;
+				?>
+			</section>
+		</main>
+    </body>
 </html>
