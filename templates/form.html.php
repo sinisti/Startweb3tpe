@@ -1,15 +1,25 @@
+<?php
+    $formAction = "index.php?page=index&action=";
+    $formAction .= isset($_GET['id']) ? 'edit&id=' . $_GET['id'] : 'add';
+   /* if (isset($dbStatus['status']))
+    {
+        showMessage($dbStatus['status'], $dbStatus['msg']);
+    }
+    */
+?>
 <div class="container">
     <?php if ($isError): displayErrors(); endif; ?>
-    <h1 class="align-center">Formularz rejestracji użytkownika</h1>
+    <h1 class="align-center">Formularz dodawania użytkownika</h1>
     <div class="form">
-        <form action="index.php?page=index&action=add" method="post">
+        <form action="<?php echo $formAction; ?>" method="post">
+            <input type="hidden" name="id" value="<?php if(isset($form['name'])): echo $form['id'];  endif;?>" />
             <div class="mb-4">
                 <label class="form-label" for="name">Imię</label>
-                <input id="name" class="form-control" type="text" name="name" placeholder="Imię" value="<?php if(isset($_POST['name']) && $isError): echo $_POST['name']; endif; ?>" require>
+                <input id="name" class="form-control" type="text" name="name" placeholder="Imię" value="<?php if(isset($form['name'])): echo $form['name'];  endif;?>" require>
             </div>
             <div class="mb-4">
                 <label class="form-label" for="surname">Nazwisko</label>
-                <input class="form-control" type="text" name="surname" placeholder="Nazwisko" value="<?php if(isset($_POST['surname']) && $isError): echo $_POST['surname']; endif; ?>" require/>
+                <input class="form-control" type="text" name="surname" placeholder="Nazwisko" value="<?php if(isset($form['surname'])): echo $form['surname'];  endif;?>" require/>
             </div>
             <!--<div class="mb-4">
                 <label class="form-label" for="birth-date">Data urodzenia</label>
@@ -17,7 +27,7 @@
             </div>-->       
             <div class="mb-4">
                 <label class="form-label" for="email">Adres E-mail</label>
-                <input id="email" class="form-control" type="email" name="email" placeholder="Adres E-mail" value="<?php if(isset($_POST['email']) && $isError): echo $_POST['email']; endif; ?>" require>
+                <input id="email" class="form-control" type="email" name="email" placeholder="Adres E-mail" value="<?php if(isset($form['email'])): echo $form['email'];  endif;?>" require>
             </div>
             <div class="mb-4">
                 <label class="form-label" for="password">Hasło</label>
