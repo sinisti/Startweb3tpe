@@ -14,7 +14,8 @@ if (!empty($_POST['id']))
 	if (!$isError)
 	{    
         $id = (int) $_POST['id'];
-        $query = "UPDATE users SET user_name = '{$_POST['name']}', user_surname = '{$_POST['surname']}', user_email = '{$_POST['email']}' WHERE id = $id";
+        $active = isset($_POST['active']) ? 1 : 0;
+        $query = "UPDATE users SET user_name = '{$_POST['name']}', user_surname = '{$_POST['surname']}', user_email = '{$_POST['email']}', active = $active  WHERE id = $id";
         
         if ($db->query($query))
         {
@@ -40,6 +41,7 @@ if (isset($_GET['id']))
         $form['id'] = $row['id'];
         $form['name'] =  $row['user_name'];
         $form['surname'] = $row['user_surname'];
-        $form['email'] = $row['user_email'];        
+        $form['email'] = $row['user_email'];
+        $form['active'] = $row['active'];    
     }    
 }

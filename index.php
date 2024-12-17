@@ -9,7 +9,15 @@ require('app/functions/validate.function.php');
 require('app/functions/helper.function.php');
 
 
-include ('templates/MasterPage.html.php');
+if (isset($_SESSION['user']))
+{
+    include ('templates/MasterPage.html.php');
+}
+else
+{
+    include ('templates/LoginPage.html.php');
+    //include ('templates/MasterPage.html.php');
+}
 
 if (isset($_SESSION['message']))
 {

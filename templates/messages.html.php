@@ -15,5 +15,11 @@ if (isset($_SESSION['message']['info']))
 {
     echo '<div class="alert alert-primary" role="alert">' . $_SESSION['message']['info'] . '</div>';
 }
+
+if (isset($_SESSION['message']['error']))
+{
+    echo '<div class="alert alert-danger" role="alert">' . $_SESSION['message']['error'] . '</div>';
+}
+
 ?>
 </div>

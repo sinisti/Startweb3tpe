@@ -11,20 +11,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		isEmail('E-mail', $_POST['email']);
 	}
 
+	$url = '?page=index&action=users';
+	$active = isset($_POST['active']) ? 1 : 0;
 	if (!$isError)
-	{	
+	{
 		/* status Bool(true|false), msg String) */
 		$dbStatus = [];
 		$password = md5(PASS_SALT . $_POST['password']);
         if (empty($_POST['id']))
         {
             $query = "INSERT INTO users SET user_name = '{$_POST['name']}', user_surname = '{$_POST['surname']}', user_email = '{$_POST['email']}', user_password = '$password'";
-            $msg = '';
         }
         else
         {
             $id = (int) $_POST['id'];
-            $query = "UPDATE users SET user_name = '{$_POST['name']}', user_surname = '{$_POST['surname']}', user_email = '{$_POST['email']}' WHERE id = $id";
+            $query = "UPDATE users SET user_name = '{$_POST['name']}', user_surname = '{$_POST['surname']}', user_email = '{$_POST['email']}', active = $active WHERE id = $id";
+			$url = '?page=index&action=edit&id=' . $id;
         }
 
 		if ($db->query($query))
@@ -41,10 +43,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		$form['name'] = $_POST['name'];
 		$form['surname'] = $_POST['surname'];
 		$form['email'] = $_POST['email'];
+		$form['active'] = $active;
 	}
 }
 
 if (isset($dbStatus['status']))
 {
-	showMessage($dbStatus['status'], $dbStatus['msg']);
+	$_SESSION[$dbStatus['status']] = $dbStatus['msg'];
 }
+
+redirect($url);
